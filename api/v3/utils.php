@@ -1339,7 +1339,7 @@ function _civicrm_api3_basic_create($bao_name, &$params, $entity = NULL) {
   else {
     // If we have custom fields the BAO may have taken care of it or we may have to.
     // $extendsMap provides a pretty good hard-coded list of BAOs that take care of the custom data.
-    if (isset($params['custom']) && empty(CRM_Core_BAO_CustomQuery::$extendsMap[$entity])) {
+    if (isset($params['custom']) && (empty(CRM_Core_BAO_CustomQuery::$extendsMap[$entity]) || $entity == 'FinancialType')) {
       CRM_Core_BAO_CustomValueTable::store($params['custom'], CRM_Core_DAO_AllCoreTables::getTableForClass(CRM_Core_DAO_AllCoreTables::getFullName($entity)), $bao->id);
     }
     $values = [];
