@@ -16,7 +16,7 @@
  */
 class CRM_Report_Form_Contribute_Summary extends CRM_Report_Form {
 
-  protected $_customGroupExtends = ['Contribution', 'Contact', 'Individual'];
+  protected $_customGroupExtends = ['Contribution', 'Contact', 'Individual', 'FinancialType'];
   protected $_customGroupGroupBy = TRUE;
 
   public $_drilldownReport = ['contribute/detail' => 'Link to Detail Report'];
