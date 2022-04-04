@@ -25,6 +25,7 @@ class CRM_Financial_BAO_EntityFinancialTrxn extends CRM_Financial_DAO_EntityFina
     return [
       'civicrm_contribution' => ts('Contribution'),
       'civicrm_financial_item' => ts('Financial Item'),
+      'civicrm_grant' => ts('Grant'),
     ];
   }
 
