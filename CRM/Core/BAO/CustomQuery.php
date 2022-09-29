@@ -109,6 +109,7 @@ class CRM_Core_BAO_CustomQuery {
     'Address' => 'civicrm_address',
     'Campaign' => 'civicrm_campaign',
     'Survey' => 'civicrm_survey',
+    'FinancialType' => 'civicrm_financial_type',
   ];
 
   /**

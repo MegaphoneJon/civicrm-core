@@ -26,6 +26,7 @@ class CRM_Report_Form_Contribute_Detail extends CRM_Report_Form {
     'Contact',
     'Individual',
     'Contribution',
+    'FinancialType',
   ];
 
   protected $groupConcatTested = TRUE;
