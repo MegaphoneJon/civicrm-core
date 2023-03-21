@@ -183,7 +183,7 @@ class CRM_PCP_Page_PCPInfo extends CRM_Core_Page {
       $this->assign('replace', $replace);
     }
 
-    $honor = CRM_PCP_BAO_PCP::honorRoll($this->_id);
+    $honor = CRM_PCP_BAO_PCP::honorRoll($this->_id, 3);
 
     $entityFile = CRM_Core_BAO_File::getEntityFile('civicrm_pcp', $this->_id);
     if (!empty($entityFile)) {

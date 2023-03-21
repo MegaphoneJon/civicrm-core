@@ -66,7 +66,6 @@
       <div class="honor-roll-wrapper">
         <div class="honor-roll-title">{ts}HONOR ROLL{/ts}</div>
           <div class="honor_roll">
-              <marquee behavior="scroll" direction="up" id="pcp_roll"  scrolldelay="200"  height="200" bgcolor="#fafafa">
                 {foreach from = $honor item = v}
                 <div class="pcp_honor_roll_entry">
                     <div class="pcp-honor_roll-nickname">{$v.nickname}</div>
@@ -74,10 +73,6 @@
                     <div class="pcp-honor_roll-personal_note">{$v.personal_note}</div>
           </div>
                 {/foreach}
-              </marquee>
-          </div>
-          <div class="description">
-              [<a href="#" onclick="roll_start_stop(); return false;" id="roll" title="{ts}Stop scrolling{/ts}">{ts}Stop{/ts}</a>]
           </div>
         </div>
      {/if}
@@ -106,27 +101,3 @@
    {/if}
 {/crmRegion}
 </div><!-- /.campaign -->
-
-
-
-
-{literal}
-<script language="JavaScript">
-
-
-var start=true;
-function roll_start_stop( ) {
-  if ( start ) {
-    document.getElementById('roll').innerHTML = "{/literal}{ts escape='js'}Start{/ts}{literal}";
-    document.getElementById('roll').title = "{/literal}{ts escape='js'}Start scrolling{/ts}{literal}";
-    document.getElementById('pcp_roll').stop();
-    start=false;
-         } else {
-    document.getElementById('roll').innerHTML = "{/literal}{ts escape='js'}Stop{/ts}{literal}";
-    document.getElementById('roll').title = "{/literal}{ts escape='js'}Stop scrolling{/ts}{literal}";
-    document.getElementById('pcp_roll').start();
-    start=true;
-         }
-}
-</script>
-{/literal}

@@ -237,7 +237,7 @@ WHERE pcp.id = %1 AND cc.contribution_status_id = %2 AND cc.is_test = 0";
    *
    * @return array
    */
-  public static function honorRoll($pcpId) {
+  public static function honorRoll($pcpId, ?int $limit = NULL) {
     $completedStatusId = CRM_Core_PseudoConstant::getKey(
       'CRM_Contribute_BAO_Contribution',
       'contribution_status_id',
@@ -251,11 +251,16 @@ WHERE pcp.id = %1 AND cc.contribution_status_id = %2 AND cc.is_test = 0";
             WHERE cs.pcp_id = %1
                   AND cs.pcp_display_in_roll = 1
                   AND contribution_status_id = %2
-                  AND is_test = 0";
+                  AND is_test = 0
+            ORDER BY cs.id DESC";
     $params = [
       1 => [$pcpId, 'Integer'],
       2 => [$completedStatusId, 'Integer'],
     ];
+    if ($limit) {
+      $query .= " LIMIT %3";
+      $params[3] = [$limit, 'Integer'];
+    }
     $dao = CRM_Core_DAO::executeQuery($query, $params);
     $honor = [];
     while ($dao->fetch()) {
