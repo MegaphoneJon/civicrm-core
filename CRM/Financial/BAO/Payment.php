@@ -260,7 +260,10 @@ class CRM_Financial_BAO_Payment {
         $contributionDAO->$fieldName = implode(',', $values);
       }
     }
-
+    // If this is a refund, reduce the `total_amount` by this value.
+    if ($params['total_amount'] < 0) {
+      $contributionDAO->total_amount += $params['total_amount'];
+    }
     $contributionDAO->save();
   }
 
