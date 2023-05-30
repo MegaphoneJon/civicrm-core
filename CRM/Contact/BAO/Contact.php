@@ -1971,15 +1971,11 @@ ORDER BY civicrm_email.is_primary DESC";
 
     // to add profile in default group
     // @todo merge this with code above which also calls addContactsToGroup
-    if (is_array($addToGroupID)) {
-      $contactIds = [$contactID];
-      foreach ($addToGroupID as $groupId) {
-        CRM_Contact_BAO_GroupContact::addContactsToGroup($contactIds, $groupId);
+    if ($addToGroupID) {
+      $status = CRM_Core_BAO_UFGroup::isProfileAddToGroupDoubleOptin() ? 'Pending' : 'Added';
+      foreach ((array) $addToGroupID as $groupId) {
+        CRM_Contact_BAO_GroupContact::addContactsToGroup((array) $contactID, $groupId, 'Admin', $status);
       }
-    }
-    elseif ($addToGroupID) {
-      $contactIds = [$contactID];
-      CRM_Contact_BAO_GroupContact::addContactsToGroup($contactIds, $addToGroupID);
     }
 
     if ($editHook) {
