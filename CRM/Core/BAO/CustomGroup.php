@@ -555,7 +555,7 @@ ORDER BY civicrm_custom_group.weight,
     $cache = CRM_Utils_Cache::singleton();
     if ($fromCache) {
       $groupTree = $cache->get($cacheKey);
-      $multipleFieldGroups = $cache->get($multipleFieldGroupCacheKey);
+      $multipleFieldGroups = $cache->get($multipleFieldGroupCacheKey, []);
     }
 
     if (empty($groupTree)) {
