@@ -38,6 +38,7 @@ class CRM_Event_Form_ManageEvent_EventInfo extends CRM_Event_Form_ManageEvent {
 
     $entityID = $this->getEventID() ?: $this->_templateId;
     $this->assign('eventID', $entityID);
+    $this->assign('entityID', $entityID);
     // when custom data is included in this page
     if (!empty($_POST['hidden_custom'])) {
       $this->set('type', 'Event');
