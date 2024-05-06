@@ -210,7 +210,7 @@ abstract class AbstractRunAction extends \Civi\Api4\Generic\AbstractAction {
   /**
    * @param array $column
    * @param array $data
-   * @return array{val: mixed, links: array, edit: array, label: string, title: string, image: array, cssClass: string}
+   * @return array{val: mixed, links: array, edit: array, label: string, title: string, image: array, cssClass: string, labelCssClass: string}
    */
   private function formatColumn($column, $data) {
     $column += ['rewrite' => NULL, 'label' => NULL, 'key' => ''];
@@ -231,6 +231,11 @@ abstract class AbstractRunAction extends \Civi\Api4\Generic\AbstractAction {
         }
         if ($this->hasValue($column['label']) && (!empty($column['forceLabel']) || $this->hasValue($out['val']))) {
           $out['label'] = $this->replaceTokens($column['label'], $data, 'view');
+          $out['labelCssClass'] = 'inline';
+          // validate to protect against injected JS
+          if (in_array($column['labelPosition'], ['inline', 'above', 'visually-hidden'])) {
+            $out['labelCssClass'] = 'crm-label-' . $column['labelPosition'];
+          }
         }
         if (!empty($column['link'])) {
           $links = $this->formatFieldLinks($column, $data, $out['val']);

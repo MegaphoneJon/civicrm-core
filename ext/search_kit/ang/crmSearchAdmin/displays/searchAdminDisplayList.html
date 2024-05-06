@@ -50,6 +50,16 @@
           <label style="visibility: hidden"><input type="checkbox" disabled></label><!--To indent by 1 checkbox-width-->
           <div class="checkbox">
             <label><input type="checkbox" ng-model="col.forceLabel"> {{:: ts('Show label even when field is blank') }}</label>
+            <div class="">
+              <label>
+                <select id="crm-search-admin-display-style" class="form-control" ng-model="col.labelPosition">
+                  <option value="above">{{:: ts('Above') }}</option>
+                  <option value="inline">{{:: ts('Inline') }}</option>
+                  <option value="visually-hidden">{{:: ts('Visually Hidden') }}</option>
+                </select>
+                {{:: ts('Label Position') }}
+              </label>
+            </div>
           </div>
         </div>
         <div ng-include="'~/crmSearchAdmin/displays/colType/' + col.type + '.html'"></div>

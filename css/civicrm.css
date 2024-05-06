@@ -3975,6 +3975,10 @@ span.crm-status-icon {
   margin-left: 30px;
 }
 
+div.crm-container .crm-label-above {
+  display: none;
+}
+
 /* Standalone-only styles. A minimal set to make it usable out-of-the-box. */
 html.crm-standalone body {
   --sa-font-family: sans-serif;
