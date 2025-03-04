@@ -80,7 +80,7 @@
           {ts}Filter search results for this field using API-style parameters{/ts}
           (<code>field=value&another_field=val1,val2</code>).<br>
           {ts}EXAMPLE (Contact entity): To list Students in "Volunteers" or "Supporters" groups:{/ts}
-          <code>contact_sub_type=Student&groups:name=Volunteers,Supporters</code>
+          <code>contact_sub_type:label=Student&groups:name=Volunteers,Supporters</code>
           {docURL page="dev/api"}
         </span>
       </td>
