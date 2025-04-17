@@ -338,8 +338,8 @@ class Finder extends AutoSubscriber {
    * @return int
    */
   public static function isTableBigger(array $a, array $b): int {
-    $tableA = $a['table'];
-    $tableB = $b['table'];
+    $tableA = substr($a, 0, strpos($a, '.'));
+    $tableB = substr($b, 0, strpos($b, '.'));
     if ($tableA === $tableB) {
       return 0;
     }
