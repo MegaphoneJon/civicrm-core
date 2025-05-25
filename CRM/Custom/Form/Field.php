@@ -59,9 +59,9 @@ class CRM_Custom_Form_Field extends CRM_Core_Form {
    */
   public static $_dataToHTML = [
     'String' => ['Text', 'Select', 'Radio', 'CheckBox', 'Autocomplete-Select', 'Hidden'],
-    'Int' => ['Text', 'Select', 'Radio', 'Hidden'],
-    'Float' => ['Text', 'Select', 'Radio', 'Hidden'],
-    'Money' => ['Text', 'Select', 'Radio', 'Hidden'],
+    'Int' => ['Text', 'Select', 'Radio', 'Hidden', 'Range'],
+    'Float' => ['Text', 'Select', 'Radio', 'Hidden', 'Range'],
+    'Money' => ['Text', 'Select', 'Radio', 'Hidden', 'Range'],
     'Memo' => ['TextArea', 'RichTextEditor'],
     'Date' => ['Select Date'],
     'Boolean' => ['Radio'],
@@ -130,6 +130,12 @@ class CRM_Custom_Form_Field extends CRM_Core_Form {
       $this->_gid = $defaults['custom_group_id'];
       $defaultValue = $defaults['default_value'] ?? NULL;
 
+      if ($defaults['html_type'] === 'Range') {
+        $attributes = CRM_Core_BAO_CustomField::attributesFromString($defaults['attributes']);
+        $defaults['min_value'] = $attributes['min'];
+        $defaults['max_value'] = $attributes['max'];
+        $defaults['step_value'] = $attributes['step'];
+      }
       if ($defaults['data_type'] == 'ContactReference' && !empty($defaults['filter'])) {
         $contactRefFilter = 'Advance';
         if (str_contains($defaults['filter'], 'action=lookup') &&
@@ -171,6 +177,9 @@ class CRM_Custom_Form_Field extends CRM_Core_Form {
       $defaults['note_rows'] = 4;
       $defaults['is_view'] = 0;
       $defaults['fk_entity_on_delete'] = CRM_Core_DAO_CustomField::fields()['fk_entity_on_delete']['default'];
+      $defaults['min_value'] = 0;
+      $defaults['max_value'] = 100;
+      $defaults['step_value'] = 1;
 
       if (CRM_Core_DAO::getFieldValue('CRM_Core_DAO_CustomGroup', $this->_gid, 'is_multiple')) {
         $defaults['in_selector'] = 1;
@@ -411,6 +420,13 @@ class CRM_Custom_Form_Field extends CRM_Core_Form {
       $attributes['text_length'],
       FALSE
     );
+
+    foreach (['min_value' => 'Minimum Value', 'max_value' => 'Maximum Value', 'step_value' => 'Step Value'] as $name => $label) {
+      // note_rows is intentional, it just formats as a numeric field
+      $this->add('number', $name, ts($label),  $attributes['note_rows']);
+      // These are validated by the browser, but this is protection against DOM manipulation.
+      $this->addRule($name, ts("%1 should be a number", [1 => $label]), 'numeric');
+    }
 
     $this->addRule('note_columns', ts('Value should be a positive number'), 'positiveInteger');
     $this->addRule('note_rows', ts('Value should be a positive number'), 'positiveInteger');

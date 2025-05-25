@@ -339,6 +339,7 @@ class BasicGetFieldsAction extends BasicGetAction {
           'EntityRef' => ts('Autocomplete Entity'),
           'File' => ts('File'),
           'Hidden' => ts('Hidden'),
+          'Range' => ts('Slider'),
           'Location' => ts('Address Location'),
           'Number' => ts('Number'),
           'Radio' => ts('Radio Buttons'),

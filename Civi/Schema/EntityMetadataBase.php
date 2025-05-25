@@ -257,6 +257,9 @@ abstract class EntityMetadataBase implements EntityMetadataInterface {
           $field['input_attrs']['rows'] = (int) ($customField['note_rows'] ?? 4);
           $field['input_attrs']['cols'] = (int) ($customField['note_columns'] ?? 60);
         }
+        if (in_array($customField['data_type'], ['Int', 'Float', 'Money'])) {
+          $field['input_attrs'] = array_merge($field['input_attrs'], \CRM_Core_BAO_CustomField::attributesFromString($customField['attributes']));
+        }
         // Date/time settings
         if ($field['input_type'] == 'Select Date') {
           $field['input_attrs']['time'] = empty($customField['time_format']) ? FALSE : ($customField['time_format'] == 1 ? 12 : 24);

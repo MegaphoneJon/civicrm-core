@@ -914,6 +914,12 @@ class CRM_Core_BAO_CustomField extends CRM_Core_DAO_CustomField implements \Civi
       case 'Hidden':
         $element = $qf->add('hidden', $elementName);
         break;
+
+      case 'Range':
+        // Range is a text field with a "range" attribute, aka "slider".
+        $fieldAttributes['type'] = 'range';
+        $fieldAttributes['data_type'] = $field->data_type;
+        $element = $qf->add('range', $elementName, $label, $fieldAttributes, $useRequired && !$search);
     }
 
     switch ($field->data_type) {
@@ -2058,9 +2064,12 @@ WHERE  id IN ( %1, %2 )
       }
     }
 
-    // Set default textarea attributes
+    // Set default attributes
     if ($op == 'create' && !isset($params['attributes']) && $htmlType == 'TextArea') {
       $params['attributes'] = 'rows=4, cols=60';
+    }
+    if ($params['html_type'] === 'Range') {
+      $params['attributes'] = "min=$params[min_value] max=$params[max_value] step=$params[step_value]";
     }
     return $params;
   }

@@ -1,0 +1,2 @@
+<input class="form-control" ng-required="$ctrl.defn.required" type="range" min="{{:: $ctrl.defn.input_attrs.min || 0 }}" max="{{:: $ctrl.defn.input_attrs.max || 100 }}" step="{{:: $ctrl.defn.input_attrs.step || 1 }}" id="{{:: fieldId }}" ng-model="getSetValue" ng-model-options="{getterSetter: true}" placeholder="{{:: $ctrl.defn.input_attrs.placeholder }}" >
+<span class="range-value-display">{{ getSetValue() }}</span>

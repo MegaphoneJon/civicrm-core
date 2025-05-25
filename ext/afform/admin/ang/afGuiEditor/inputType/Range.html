@@ -1,0 +1,6 @@
+<div class="form-inline">
+    <span class="af-field-range-sep" ng-if="i">-</span>
+    <input autocomplete="off" class="form-control" ng-model="getSet('input_attrs.placeholder' + i)" ng-model-options="$ctrl.editor.debounceWithGetterSetter" min="{{:: $ctrl.node.defn.input_attrs.min" }} max="getSet('input_attrs.max' + i)" step="getSet('input_attrs.step' + i)" type="range"/>
+    <span class="range-value-display">{{ $ctrl.node.defn }}</span>
+  </div>
+</div>

@@ -204,7 +204,7 @@
             return !(defn.options || defn.input_type === 'Date' || defn.input_type === 'EntityRef' || defn.data_type === 'Boolean');
 
           case 'Number':
-            return !(defn.options || defn.data_type === 'Boolean');
+            return !(defn.options || defn.data_type === 'Boolean' || defn.data_type === 'Range');
 
           case 'DisplayOnly':
           case 'Hidden':

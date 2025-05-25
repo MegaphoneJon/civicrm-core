@@ -113,6 +113,18 @@
       <td class="label">{$form.note_length.label}</td>
       <td class="html-adjust">{$form.note_length.html} <span class="description">{ts}Leave blank for unlimited. This limit is not implemented by all browsers and rich text editors.{/ts}</span></td>
     </tr>
+    <tr class="crm-custom-field-form-block-min" id="minValue">
+      <td class="label">{$form.min_value.label}</td>
+      <td class="html-adjust">{$form.min_value.html}
+    </td>
+    <tr class="crm-custom-field-form-block-max" id="maxValue">
+      <td class="label">{$form.max_value.label}</td>
+      <td class="html-adjust">{$form.max_value.html}
+    </td>
+    <tr class="crm-custom-field-form-block-step" id="stepValue">
+      <td class="label">{$form.step_value.label}</td>
+      <td class="html-adjust">{$form.step_value.html}
+    </td>
     <tr class="crm-custom-field-form-block-weight" >
       <td class="label">{$form.weight.label}</td>
       <td>{$form.weight.html|crmAddClass:two}
@@ -222,6 +234,7 @@
 
       showSearchRange(dataType);
       customOptionHtmlType(dataType);
+      showMinMaxStep(dataType, htmlType);
     }
 
     $('#data_type', $form).each(onChangeDataType).change(onChangeDataType);
@@ -232,6 +245,14 @@
         $("#searchByRange", $form).show();
       } else {
         $("#searchByRange", $form).hide();
+      }
+    }
+
+    function showMinMaxStep(dataType, htmlType) {
+      if ((dataType === 'Int' || dataType === 'Float' || dataType === 'Money') && htmlType !== 'Hidden') {
+        $("#minValue, #maxValue, #stepValue", $form).show();
+      } else {
+        $("#minValue, #maxValue, #stepValue", $form).hide();
       }
     }
 
@@ -271,7 +292,7 @@
       }
 
       if (_.includes(['String', 'Int', 'Float', 'Money'], dataType)) {
-        if (!['Text', 'Hidden'].includes(htmlType)) {
+        if (!['Text', 'Hidden', 'Range'].includes(htmlType)) {
           $("#showoption, #searchable", $form).show();
           $("#hideDefault, #hideDesc, #searchByRange", $form).hide();
         } else {
@@ -290,7 +311,7 @@
         $("#showoption").hide();
       }
 
-      if (_.includes(['String', 'Int', 'Float', 'Money'], dataType) && !['Text', 'Hidden'].includes(htmlType)) {
+      if (_.includes(['String', 'Int', 'Float', 'Money'], dataType) && !['Text', 'Hidden', 'Range'].includes(htmlType)) {
         if (serialize) {
           $('div[id^=checkbox]', '#optionField').show();
           $('div[id^=radio]', '#optionField').hide();

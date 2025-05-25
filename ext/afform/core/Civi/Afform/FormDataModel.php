@@ -258,6 +258,7 @@ class FormDataModel {
       // Afform-only (so far) metadata tells the form to update an existing entity autofilled from this value
       $field['input_attrs']['autofill'] = 'update';
       $field['input_attrs']['placeholder'] = E::ts('Select %1', [1 => $entityTitle]);
+      $field['input_attrs'] = array_merge($field['input_attrs'], \CRM_Core_BAO_CustomField::attributesFromString($customField['attributes']));
     }
     // If this is an implicit join, get new field from fk entity
     if ($field['name'] !== $fieldName && $field['fk_entity']) {

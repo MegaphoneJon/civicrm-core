@@ -488,6 +488,10 @@ input.crm-form-entityref {
   vertical-align: top;
 }
 
+#crm-container .range-value-display {
+  vertical-align: top;
+}
+
 /* Use definition lists for simple 2 col forms - <dt> for labels, <dd> for fields */
 .crm-container div.form-item dt,
 .crm-container .crm-form-block dt {
