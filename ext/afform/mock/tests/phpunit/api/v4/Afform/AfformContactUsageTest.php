@@ -514,7 +514,7 @@ EOHTML;
     catch (\CRM_Core_Exception $e) {
       // Should fail required fields missing
       $this->assertStringContainsString('First Name is a required field', $e->getMessage());
-      $this->assertStringContainsString('Email is a required field', $e->getMessage());      
+      $this->assertStringContainsString('Email is a required field', $e->getMessage());
     }
 
   }
