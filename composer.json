@@ -315,5 +315,8 @@
     },
     "compile-includes": ["composer.compile.json", "ext/greenwich/composer.compile.json"],
     "compile-whitelist": ["civicrm/composer-compile-lib"]
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^2.1"
   }
 }

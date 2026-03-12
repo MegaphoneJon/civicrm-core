@@ -1,0 +1,18 @@
+ -- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+     Error                                                                                                                                                                                                        
+ -- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+     Internal error: Class "CRM_CiviImport_Form_MapField" not found while analysing file /home/jon/local/civicrm-buildkit/build/smaster/web/core/ext/civiimport/civiimport.php                                    
+                                                                                                                                                                                                                  
+     Run PHPStan with -v option and post the stack trace to:                                                                                                                                                      
+     https://github.com/phpstan/phpstan/issues/new?template=Bug_report.yaml                                                                                                                                       
+                                                                                                                                                                                                                  
+     Child process error (exit code 255): PHP Fatal error:  Declaration of CRM_Utils_System_Soap::authenticate($name, $pass) must be compatible with CRM_Utils_System_Base::authenticate($name, $password,        
+     $loadCMSBootstrap = false, $realPath = null) in /home/jon/local/civicrm-buildkit/build/smaster/web/core/CRM/Utils/System/Soap.php on line 77                                                                 
+     Fatal error: Declaration of CRM_Utils_System_Soap::authenticate($name, $pass) must be compatible with CRM_Utils_System_Base::authenticate($name, $password, $loadCMSBootstrap = false, $realPath = null) in  
+     /home/jon/local/civicrm-buildkit/build/smaster/web/core/CRM/Utils/System/Soap.php on line 77                                                                                                                 
+      while running parallel worker                                                                                                                                                                               
+ -- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+
+ [ERROR] Found 2 errors                                                                                                 
+

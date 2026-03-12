@@ -1,0 +1,27 @@
+parameters:
+  bootstrapFiles:
+    - ../private/civicrm.settings.php
+    - phpstan.classAliases.php
+    - phpstan-extension-bootstrap.php
+  level: 0
+  paths:
+    - CRM
+    - Civi
+    - api
+    - ext
+    - managed
+    - schema
+    - settings
+    - templates
+  scanDirectories:
+    - packages
+    - mixin
+  excludePaths:
+    - packages/_ORIGINAL_/
+    - */tests/*
+    - Civi/Test/
+    - */WordPress.php
+    - */Drupal.php
+    - */Backdrop.php
+    - */Joomla.php
+    - */Soap.php
