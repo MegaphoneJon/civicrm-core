@@ -138,3 +138,25 @@ af-search-param-sets dl > div {
 af-search-param-sets dl > div > dt {
   min-width: 10rem;
 }
+.af-signature-pad {
+  display: inline-block;
+  max-width: 100%;
+}
+.af-signature-pad-canvas {
+  display: block;
+  width: 320px;
+  height: 120px;
+  max-width: 100%;
+  background-color: #fff;
+  border: 1px solid var(--crm-l-border-color, #ccc);
+  border-radius: var(--crm-l-radius, 4px);
+  touch-action: none;
+  cursor: crosshair;
+}
+.af-signature-pad-controls {
+  margin-top: 0.25rem;
+}
+.af-signature-pad-preview .af-signature-pad-canvas {
+  background: repeating-linear-gradient(135deg, #fafafa, #fafafa 10px, #f0f0f0 10px, #f0f0f0 20px);
+  cursor: not-allowed;
+}

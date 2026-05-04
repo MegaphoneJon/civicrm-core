@@ -268,7 +268,7 @@ class Submit extends AbstractProcessor {
       return NULL;
     }
     // we don't need to validate the file fields as it's handled separately
-    if ($fieldDefn['input_type'] === 'File') {
+    if (in_array($fieldDefn['input_type'] ?? NULL, ['File', 'Signature'], TRUE)) {
       return NULL;
     }
 

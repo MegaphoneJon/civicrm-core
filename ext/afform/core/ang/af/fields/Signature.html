@@ -1,0 +1,20 @@
+<span ng-if="dataProvider.getFieldData()[$ctrl.fieldName].id">
+  <a ng-if="dataProvider.getFieldData()[$ctrl.fieldName].url" ng-href="{{:: dataProvider.getFieldData()[$ctrl.fieldName].url }}">
+    <i class="crm-i {{ dataProvider.getFieldData()[$ctrl.fieldName].icon }}" role="img" aria-hidden="true"></i>
+    {{ dataProvider.getFieldData()[$ctrl.fieldName].file_name }}
+  </a>
+  <span ng-if="!dataProvider.getFieldData()[$ctrl.fieldName].url">
+    <i class="crm-i {{ dataProvider.getFieldData()[$ctrl.fieldName].icon }}" role="img" aria-hidden="true"></i>
+    {{ dataProvider.getFieldData()[$ctrl.fieldName].file_name }}
+  </span>
+  <a class="crm-hover-button" title="{{:: ts('Replace') }}" ng-click="dataProvider.getFieldData()[$ctrl.fieldName].id = null">
+    <i class="crm-i fa-times" role="img" aria-hidden="true"></i>
+  </a>
+</span>
+<af-signature-pad ng-if="!dataProvider.getFieldData()[$ctrl.fieldName].id"
+  uploader="$ctrl.afFieldset.afFormCtrl.fileUploader"
+  api-params="$ctrl.getFileUploadParams"
+  data-provider="dataProvider"
+  field-name="{{:: $ctrl.fieldName }}"
+  required="$ctrl.defn.required">
+</af-signature-pad>

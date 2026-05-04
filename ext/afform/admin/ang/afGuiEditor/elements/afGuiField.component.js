@@ -253,6 +253,9 @@
           case 'Range':
             return (defn.data_type === 'Integer' || defn.data_type === 'Float' || defn.data_type === 'Money');
 
+          case 'Signature':
+            return defn.input_type === 'File';
+
           case 'DisplayOnly':
           case 'Hidden':
             return true;

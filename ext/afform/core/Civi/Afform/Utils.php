@@ -139,6 +139,9 @@ class Utils {
         'Select' => [
           'label' => E::ts('Select'),
         ],
+        'Signature' => [
+          'label' => E::ts('Signature'),
+        ],
         'Text' => [
           'label' => E::ts('Single-Line Text'),
           'extra_defn' => [
