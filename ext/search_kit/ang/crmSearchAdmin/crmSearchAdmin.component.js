@@ -603,7 +603,7 @@
     }
 
     this.addParam = function(name, value) {
-      if (value && !ctrl.savedSearch.api_params[name].includes(value)) {
+      if (value) {
         ctrl.savedSearch.api_params[name].push(value);
         // This needs to be called when adding a field as well as changing groupBy
         reconcileAggregateColumns();
@@ -695,9 +695,7 @@
 
     this.fieldsForSelect = function() {
       return {
-        results: ctrl.getAllFields(':label', ['Field', 'Custom', 'Extra', 'Pseudo'], (key) => {
-          ctrl.savedSearch.api_params.select.includes(key);
-        })
+        results: ctrl.getAllFields(':label', ['Field', 'Custom', 'Extra', 'Pseudo'])
       };
     };
 
