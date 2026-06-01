@@ -1,0 +1,23 @@
+<af-form ctrl="afform">
+  <af-entity data="{source: '%%CP_SOURCE%%'}" type="Individual" name="Individual1" label="Individual 1" actions="{create: true, update: true}" security="RBAC" />
+  <af-entity data="{contact_id: 'Individual1', financial_type_id: %%CP_FINANCIAL_TYPE_ID%%}" actions="{create: true, update: false}" type="Contribution" name="Contribution1" label="Contribution 1" security="RBAC" />
+  <div class="af-markup">
+    %%CP_INTRO_TEXT%%
+  </div>
+  <fieldset af-fieldset="Individual1" class="af-container" af-title="Individual 1">
+    <af-field name="first_name" />
+    <af-field name="last_name" />
+    <af-field name="email-Primary.email" />
+  </fieldset>
+  <fieldset af-fieldset="Contribution1" class="af-container" af-title="Contribution 1">
+    <af-field name="total_amount" defn="{label: 'Contribution Amount', input_attrs: {}}" />
+  </fieldset>
+  <fieldset af-template-block="pay_later" af-fieldset="Contribution1" class="af-container" af-title="Pay Later Options">
+    <af-field name="is_pay_later" />
+  </fieldset>
+  <fieldset af-template-block="recurring" af-fieldset="Contribution1" class="af-container" af-title="Recurring Contributions">
+    <af-field name="contribution_recur_id.frequency_unit" />
+    <af-field name="contribution_recur_id.frequency_interval" />
+  </fieldset>
+  <button class="af-button btn btn-primary" crm-icon="fa-check" ng-click="afform.submit()" ng-if="afform.showSubmitButton">Submit</button>
+</af-form>

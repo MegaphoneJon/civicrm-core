@@ -343,6 +343,34 @@ class Afform extends Generic\AbstractEntity {
           'input_type' => 'Select',
           'required' => \CRM_Core_I18n::isMultiLingual(),
         ],
+        [
+          'name' => 'is_template',
+          'title' => ts('Is Template'),
+          'data_type' => 'Boolean',
+          'description' => 'Marks this form as a reusable template for autogen providers rather than a deployable form',
+          'default_value' => FALSE,
+        ],
+        [
+          'name' => 'autogen_source',
+          'title' => ts('Auto-generated Source'),
+          'data_type' => 'String',
+          'description' => 'Entity that generated this form, e.g. "ContributionPage:1" or "Event:5"',
+          'readonly' => TRUE,
+        ],
+        [
+          'name' => 'autogen_template',
+          'title' => ts('Auto-generated Template'),
+          'data_type' => 'String',
+          'description' => 'Template name used when generating this form',
+          'readonly' => TRUE,
+        ],
+        [
+          'name' => 'autogen_layout_hash',
+          'title' => ts('Auto-generated Layout Hash'),
+          'data_type' => 'String',
+          'description' => 'MD5 of the layout at generation time; differs from current layout if the form has been customized',
+          'readonly' => TRUE,
+        ],
       ];
       // Calculated fields returned by get action
       if ($self->getAction() === 'get') {
